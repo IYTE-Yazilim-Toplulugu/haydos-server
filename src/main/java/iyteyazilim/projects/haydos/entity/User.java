@@ -1,15 +1,14 @@
 package iyteyazilim.projects.haydos.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
@@ -24,6 +23,7 @@ public class User {
 
     private String  password ;
 
+    @ManyToMany
     private Reports report ;
 
     private Long points;
