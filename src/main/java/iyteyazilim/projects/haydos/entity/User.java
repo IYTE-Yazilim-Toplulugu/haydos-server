@@ -23,7 +23,7 @@ public class User {
 
     private String  password ;
 
-    @ManyToMany
+
     private Reports report ;
 
     private Long points;
