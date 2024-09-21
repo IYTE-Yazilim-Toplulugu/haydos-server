@@ -6,28 +6,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 
 @Entity
 @Data
+@Table(name = "reports")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Reports {
 
-
-
-    @GeneratedValue
     @Id
-    private Long id  ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Paws aboutPaw ;
+    @OneToOne
+    @JoinColumn(name = "paw_id") // Paws tablosundaki 'id' kolonuna referans veriyor
+    private Paws aboutPaw;
 
-    private String report  ;
+    private String report;
 
-    private Date  date ;
+    private Date date;
 
-    private User user ;
+    @ManyToOne
+    @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
+    private User userWhoReport;
+}
 
-
- }

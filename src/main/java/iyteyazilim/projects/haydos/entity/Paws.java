@@ -1,36 +1,33 @@
 package iyteyazilim.projects.haydos.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity
 @Data
+@Table(name = "paws")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Paws {
 
-
-    @GeneratedValue
     @Id
-    private Long id ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String name ;
+    private String name;
 
-    private String gender ;
+    private String gender;
 
-    //Optional
-    private boolean isMale ;
+    // Optional
+    private boolean isMale;
 
-    private HealthCondition healthCondition ;
+    @Enumerated(EnumType.STRING)
+    private HealthCondition healthCondition;
 
-    private Reports reports  ;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "aboutPaw")
+    private Reports reportsAbout;
 
-    private boolean isApproved ;
-
-
+    private boolean isApproved;
 }

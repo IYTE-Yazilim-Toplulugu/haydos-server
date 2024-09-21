@@ -1,27 +1,30 @@
 package iyteyazilim.projects.haydos.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@Table(name = "location")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Location {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long xCoordinate ;
+    private Long xCoordinate;
 
-    private Long yCoordinate ;
+    private Long yCoordinate;
 
-    private String name ;
+    private String name;
 
+    @OneToMany(mappedBy = "locationWhichFeed", cascade = CascadeType.ALL)
+    private List<Feeding> feedings;
 }
+

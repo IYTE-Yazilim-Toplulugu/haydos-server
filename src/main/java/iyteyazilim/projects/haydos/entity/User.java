@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
 @Entity
 @Data
 @Table(name = "user")
@@ -15,23 +14,43 @@ import java.util.List;
 @AllArgsConstructor
 public class User {
 
-    @GeneratedValue
     @Id
-    private Long id ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String name ;
+    private String name;
 
-    private String email ;
+    private String email;
 
-    private String  password ;
-
-    private Reports report ;
+    private String password;
 
     private Long points;
 
-    private String photo ;
+    private String photo;
 
-    @ManyToMany(cascade = CascadeType.ALL , mappedBy = "friendsTo")
-    private List<User> friends ;
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
+    @OneToMany(mappedBy = "userWhoMiss", cascade = CascadeType.ALL)
+    private List<Missing> missingPawsByMe;
+
+    @OneToMany(mappedBy = "userWhoAdopt", cascade = CascadeType.ALL)
+    private List<Adoption> adoptionPawsByMe;
+
+    @OneToMany(mappedBy = "userWhoAnnounce", cascade = CascadeType.ALL)
+    private List<Announcement> announcementByMe;
+
+    @OneToMany(mappedBy = "userWhoFeed", cascade = CascadeType.ALL)
+    private List<Feeding> feedPawsByMe;
+
+    @OneToMany(mappedBy = "userWhoReport", cascade = CascadeType.ALL)
+    private List<Reports> reports;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_friends",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "friend_id")
+    )
+    private List<Friends> friends;
 }

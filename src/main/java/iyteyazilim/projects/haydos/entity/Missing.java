@@ -1,33 +1,32 @@
 package iyteyazilim.projects.haydos.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity
 @Data
+@Table(name = "missing")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Missing {
 
-
-    @GeneratedValue
     @Id
-    private Long id ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String yourName;
 
-    private String yourPhoto ;
+    private String yourPhoto;
 
-    private Long phoneNumber ;
+    private Long phoneNumber;
 
-    private String description ;
+    private String description;
 
     private boolean isApproved;
 
-    private User user ;
+    @ManyToOne
+    @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
+    private User userWhoMiss;
 }

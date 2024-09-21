@@ -1,31 +1,31 @@
 package iyteyazilim.projects.haydos.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
-
 @Entity
 @Data
+@Table(name = "announcement")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Announcement {
 
-
-    @GeneratedValue
     @Id
-    private Long id ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String header ;
+    private String header;
 
-    private String description ;
+    private String description;
 
     private String photo;
 
-    private Date date ;
+    private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
+    private User userWhoAnnounce;
 }

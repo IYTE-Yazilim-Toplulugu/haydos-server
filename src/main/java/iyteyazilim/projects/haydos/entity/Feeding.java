@@ -1,25 +1,30 @@
 package iyteyazilim.projects.haydos.entity;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import iyteyazilim.projects.haydos.entity.Location;
+import iyteyazilim.projects.haydos.entity.User;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name = "feeding")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Feeding {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(cascade = )
-    private Location location ;
+    @ManyToOne
+    @JoinColumn(name = "location_id") // Location tablosundaki 'id' kolonuna referans veriyor
+    private Location locationWhichFeed;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
+    private User userWhoFeed;
 
-    private User user ;
-
-    private String image ;
+    private String image;
 }
