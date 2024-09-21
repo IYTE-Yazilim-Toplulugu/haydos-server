@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "user")
@@ -23,11 +25,13 @@ public class User {
 
     private String  password ;
 
-
     private Reports report ;
 
     private Long points;
 
     private String photo ;
+
+    @ManyToMany(cascade = CascadeType.ALL , mappedBy = "friendsTo")
+    private List<User> friends ;
 
 }
