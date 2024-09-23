@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 @Entity
 @Data
-@Table(name = "announcement")
+@Table(name = "announcement",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Announcement {

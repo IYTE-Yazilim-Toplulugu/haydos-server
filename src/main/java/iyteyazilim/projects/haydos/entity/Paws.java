@@ -5,29 +5,42 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Collection;
+import java.util.List;
+
 @Entity
 @Data
-@Table(name = "paws")
+@Table(name = "paws",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Paws {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "paw_id")
     private Long id;
 
-    private String name;
+    @Column(name = "paw_name")
+    private String pawName;
 
-    private String gender;
+    @Column(name = "paw_gender")
+    private String pawGender;
 
     // Optional
-    private boolean isMale;
 
+
+    @Column(name = "paw_health")
     @Enumerated(EnumType.STRING)
     private HealthCondition healthCondition;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "aboutPaw")
-    private Reports reportsAbout;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aboutPaw")
+    private Collection<Reports> reportsAbout;
 
+    @Column(name = "paw_approval")
     private boolean isApproved;
+
+    @ManyToOne()
+    @JoinColumn(name = "location_id")
+    private Location pawAtLocation  ;
 }

@@ -5,9 +5,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+
 @Entity
 @Data
-@Table(name = "missing")
+@Table(name = "missing" ,schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Missing {
@@ -16,9 +18,9 @@ public class Missing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String yourName;
+    private String pawName;
 
-    private String yourPhoto;
+    private String pawPhoto;
 
     private Long phoneNumber;
 

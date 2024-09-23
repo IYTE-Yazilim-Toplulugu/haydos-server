@@ -6,10 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.List;
 @Entity
 @Data
-@Table(name = "location")
+@Table(name = "location",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location {
@@ -26,5 +27,9 @@ public class Location {
 
     @OneToMany(mappedBy = "locationWhichFeed", cascade = CascadeType.ALL)
     private List<Feeding> feedings;
+
+
+    @OneToMany(mappedBy = "pawAtLocation" , cascade =  CascadeType.ALL)
+    private List<Paws> pawsInHere ;
 }
 

@@ -9,26 +9,28 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 @Entity
 @Data
-@Table(name = "user")
+@Table(name = "user", schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
+    @Column(name = "user_name",nullable = false)
     private String name;
-
+    @Column(name = "user_email" , nullable = false  ,unique = true)
     private String email;
-
+    @Column(name = "user_password" , nullable = false)
     private String password;
-
+    @Column(name = "user_points")
     private Long points;
-
-    private String photo;
-
+    @Column(name = "user_image")
+    private String image;
     @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
     private UserRole userRole;
 
     @OneToMany(mappedBy = "userWhoMiss", cascade = CascadeType.ALL)

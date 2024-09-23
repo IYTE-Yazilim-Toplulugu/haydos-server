@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "feeding")
+@Table(name = "feeding",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Feeding {
@@ -27,4 +27,6 @@ public class Feeding {
     private User userWhoFeed;
 
     private String image;
+
+    private boolean isApproved ;
 }
