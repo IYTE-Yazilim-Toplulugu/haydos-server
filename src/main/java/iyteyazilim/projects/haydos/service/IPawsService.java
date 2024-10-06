@@ -1,4 +1,4 @@
 package iyteyazilim.projects.haydos.service;
 
-public class RelationalDataAccessApplication {
+public interface IPawsService {
 }

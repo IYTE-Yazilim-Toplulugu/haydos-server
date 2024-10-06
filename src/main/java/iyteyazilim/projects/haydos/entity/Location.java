@@ -25,6 +25,8 @@ public class Location {
 
     private String name;
 
+    private String description ;
+
     @OneToMany(mappedBy = "locationWhichFeed", cascade = CascadeType.ALL)
     private List<Feeding> feedings;
 

@@ -1,4 +1,4 @@
 package iyteyazilim.projects.haydos.dto;
 
-public class deleteMe {
+public class MissingDto {
 }
