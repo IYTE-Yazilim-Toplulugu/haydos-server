@@ -2,11 +2,11 @@ package iyteyazilim.projects.haydos.entity;
 
 import iyteyazilim.projects.haydos.entity.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
+@Getter
+@Setter
 @Data
 @Table(name = "adoption",schema = "haydosAppDB")
 @NoArgsConstructor

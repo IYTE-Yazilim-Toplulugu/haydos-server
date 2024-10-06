@@ -1,17 +1,17 @@
 package iyteyazilim.projects.haydos.service;
 
-import iyteyazilim.projects.haydos.dto.UserDto;
+import iyteyazilim.projects.haydos.dto.Feeding;
 
 import java.util.List;
 
 public interface IUserService {
-    UserDto createUser(UserDto userDto);
+    Feeding createUser(Feeding userDto);
 
-    UserDto getUserById(Long Id);
+    Feeding getUserById(Long Id);
 
-    List<UserDto> getAllUsers();
+    List<Feeding> getAllUsers();
 
-    UserDto updateUser(Long userID, UserDto userDto);
+    Feeding updateUser(Long userID, Feeding userDto);
 
     void deleteUser(Long ID);
 

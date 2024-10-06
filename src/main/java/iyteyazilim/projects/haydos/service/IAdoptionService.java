@@ -1,18 +1,22 @@
 package iyteyazilim.projects.haydos.service;
 
-import iyteyazilim.projects.haydos.dto.UserDto;
+import iyteyazilim.projects.haydos.dto.AdoptionDto;
+import iyteyazilim.projects.haydos.dto.Feeding;
+import iyteyazilim.projects.haydos.entity.Adoption;
 
 import java.util.List;
 
 public interface IAdoptionService {
 
-    UserDto createUser(UserDto userDto);
+    Adoption createAdoption(AdoptionDto adoption);
 
-    UserDto getUserById(Long Id);
+    Adoption getAdoptionById(Long Id);
 
-    List<UserDto> getAllUsers();
+    List<Adoption> getAllAdoptions();
 
-    UserDto updateUser(Long userID, UserDto userDto);
+    Adoption updateAdoption(Long userID, AdoptionDto adoption);
 
-    void deleteUser(Long ID);
+    void deleteAdoption(Long ID);
+
+    Adoption approvedAdoption(AdoptionDto adoption);
 }

@@ -1,18 +1,18 @@
 package iyteyazilim.projects.haydos.service;
 
-import iyteyazilim.projects.haydos.dto.LocationDto;
+import iyteyazilim.projects.haydos.entity.Location;
 
 import java.util.List;
 
 public interface ILocationService {
 
-    LocationDto createLocation(LocationDto locationDto);
+    Location createLocation(Location location);
 
-    LocationDto getLocationById(Long locationId);
+    Location getLocationById(Long locationId);
 
-    List<LocationDto> getAllLocation();
+    List<Location> getAllLocation();
 
-    LocationDto updateLocation(Long LocationId , LocationDto locationDto);
+    Location updateLocation(Long LocationId , Location locationDto);
 
     void deleteLocation(Long locationId);
 }

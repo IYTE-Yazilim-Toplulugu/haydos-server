@@ -4,7 +4,7 @@ package iyteyazilim.projects.haydos.dto;
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class Feeding {
 
     private String email ;
 

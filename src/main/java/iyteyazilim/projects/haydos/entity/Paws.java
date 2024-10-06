@@ -35,6 +35,7 @@ public class Paws {
     private HealthCondition healthCondition;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aboutPaw")
+    @Column(nullable = true)
     private Collection<Reports> reportsAbout;
 
     @Column(name = "paw_approval")
