@@ -26,12 +26,15 @@ public class User {
     @Column(name = "user_password" , nullable = false)
     private String password;
     @Column(name = "user_points")
-    private Long points;
+    private Integer points;
     @Column(name = "user_image")
     private String image;
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role")
     private UserRole userRole;
+
+    @Column(name = "user_email" , nullable = false , unique = true,insertable=false, updatable=false)
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "userWhoMiss", cascade = CascadeType.ALL)
     private List<Missing> missingPawsByMe;

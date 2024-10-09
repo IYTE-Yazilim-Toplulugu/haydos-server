@@ -17,7 +17,7 @@ public class Adoption {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String yourName;
+    private String name;
 
     private String yourPhoto;
 

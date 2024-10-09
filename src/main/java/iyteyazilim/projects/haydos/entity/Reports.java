@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 
 @Entity
@@ -28,7 +30,7 @@ public class Reports {
     private String report;
 
     @Column(name = "report_date")
-    private Date date;
+    private final LocalDate today = LocalDate.now();
     @ManyToOne
     @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
     private User userWhoReport;

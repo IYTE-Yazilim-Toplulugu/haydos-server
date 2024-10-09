@@ -2,7 +2,9 @@ package iyteyazilim.projects.haydos.service;
 
 import iyteyazilim.projects.haydos.entity.Missing;
 import iyteyazilim.projects.haydos.entity.Paws;
+import iyteyazilim.projects.haydos.entity.Reports;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface IPawsService {
@@ -16,5 +18,7 @@ public interface IPawsService {
 
     void deletePaws(Long ID);
 
-    void approvePaws();
+    void approvePaws(Paws paws) ;
+
+    Collection<Reports> reportsAboutPaws(Paws paws);
 }

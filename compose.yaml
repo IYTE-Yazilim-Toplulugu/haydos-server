@@ -1,10 +1,10 @@
+version: '3.8'
 services:
   mysql:
     image: 'mysql:latest'
     environment:
-      - 'MYSQL_DATABASE=haydosAppDB'
-      - 'MYSQL_PASSWORD=yusuf.129'
-      - 'MYSQL_ROOT_PASSWORD=yusuf.129'
-      - 'MYSQL_USER=root'
+      - 'MYSQL_DATABASE=secret'        # Oluşturulacak veritabanı
+      - 'MYSQL_ROOT_PASSWORD=my-secret-pw'  # Root kullanıcısı için şifre
+      # MYSQL_USER ve MYSQL_PASSWORD kaldırılmalı
     ports:
-      - '3306'
+      - '3307:3306'  # Host ve konteyner portlarını bağla

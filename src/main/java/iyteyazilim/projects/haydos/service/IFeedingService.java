@@ -1,6 +1,7 @@
 package iyteyazilim.projects.haydos.service;
 
-import iyteyazilim.projects.haydos.dto.Feeding;
+
+import iyteyazilim.projects.haydos.entity.Feeding;
 
 import java.util.List;
 

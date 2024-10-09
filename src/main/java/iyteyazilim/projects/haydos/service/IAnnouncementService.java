@@ -1,6 +1,7 @@
 package iyteyazilim.projects.haydos.service;
 
 import iyteyazilim.projects.haydos.entity.Announcement;
+import iyteyazilim.projects.haydos.entity.User;
 
 import java.util.List;
 
@@ -12,8 +13,10 @@ public interface IAnnouncementService {
 
     List<Announcement> getAllAnnouncements();
 
-    Announcement updateAnnouncement(Long announcementId, Announcement userDto);
+    Announcement updateAnnouncement(Long announcementId, Announcement oldAnnouncement);
 
     void deleteAnnouncement(Long ID);
+
+    User findUserWhoAnnounce(Announcement announcement);
 
 }

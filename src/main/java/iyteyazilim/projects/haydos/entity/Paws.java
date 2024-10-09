@@ -7,11 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
-import java.util.List;
+
 
 @Entity
 @Data
-@Table(name = "paws",schema = "haydosAppDB")
+@Table(name = "paw",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Paws {
@@ -24,10 +24,21 @@ public class Paws {
     @Column(name = "paw_name")
     private String pawName;
 
+    @Column(name =  "paw_image")
+    private String image;
+
     @Column(name = "paw_gender")
     private String pawGender;
 
-    // Optional
+    @Column(name = "paw_age")
+    private Long age ;
+
+    @Column(name = "paw_funFact")
+    private String funFact;
+
+    @Column(name =  "paw_type")
+    @Enumerated(EnumType.STRING)
+    private PetType petType ;
 
 
     @Column(name = "paw_health")
