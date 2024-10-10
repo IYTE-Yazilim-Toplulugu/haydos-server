@@ -19,15 +19,15 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long xCoordinate;
+    private Long latitude;
 
-    private Long yCoordinate;
+    private Long longitude;
 
     private String name;
 
     private String description ;
 
-    @OneToMany(mappedBy = "locationWhichFeed", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "locationWhichFeed", cascade = CascadeType.ALL )
     private List<Feeding> feedings;
 
 

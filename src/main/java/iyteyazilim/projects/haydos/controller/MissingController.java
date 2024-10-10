@@ -28,8 +28,6 @@ public class MissingController {
         return ResponseEntity.ok(missingService.createMissing(missing));
     }
 
-
-
     @GetMapping("/getAll")
     public ResponseEntity<List<Missing>> getAllMissing(){
         return ResponseEntity.ok(missingService.getAllMissing());
@@ -45,8 +43,6 @@ public class MissingController {
     public ResponseEntity<List<Missing>> getAllUnapprovedMissing(){
         return ResponseEntity.ok(missingService.getAllUnApprovedMissing());
     }
-
-
 
 
 

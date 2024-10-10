@@ -48,6 +48,7 @@ public class AnnouncementService implements IAnnouncementService {
     @Override
     public Announcement updateAnnouncement(Long announcementId, Announcement oldAnnouncement) {
         Announcement newAnnouncement = getAnnouncementById(announcementId);
+        return announcementRepository.save(newAnnouncement);
 
     }
 

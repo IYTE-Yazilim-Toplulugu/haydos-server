@@ -19,7 +19,7 @@ public interface IAdoptionService {
 
     void deleteAdoption(Long ID);
 
-    Adoption approvedAdoption(Adoption adoption);
+    void approvedAdoption(Adoption adoption);
 
     Adoption createAdoptionWithUser(Adoption adoption , User user);
 

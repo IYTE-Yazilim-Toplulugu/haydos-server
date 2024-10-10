@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Entity
 @Data
 @Table(name = "feeding",schema = "haydosAppDB")
@@ -26,7 +29,16 @@ public class Feeding {
     @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
     private User userWhoFeed;
 
+    @Column(nullable = false)
     private String image;
 
-    private boolean isApproved ;
+    @Column(nullable = false)
+    private boolean approved ;
+
+
+    private  String feedingTime   ;
+
+
+
+
 }

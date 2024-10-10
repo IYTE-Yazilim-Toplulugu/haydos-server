@@ -2,12 +2,12 @@ package iyteyazilim.projects.haydos.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Missing {
@@ -25,9 +25,10 @@ public class Missing {
 
     private String description ;
 
-    private boolean isApproved;
+    @Column(name = "approved_status")
+    private boolean approved;
 
     @ManyToOne
-    @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
+    @JoinColumn(name = "user_id" , nullable = false) // User tablosundaki 'id' kolonuna referans veriyor
     private User userWhoMiss ;
 }

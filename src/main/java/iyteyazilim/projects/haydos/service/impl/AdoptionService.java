@@ -24,11 +24,17 @@ public class AdoptionService implements IAdoptionService {
 
     @Override
     public Adoption createAdoption(Adoption adoption) {
-        return null;
+       return  adoptionRepository.save(adoption);
 
     }
     public Adoption createAdoptionWithUser(Adoption adoption ,User user){
-        return null ;
+
+
+        if(adoption.getUserWhoAdopt() == null){
+            adoption.setUserWhoAdopt(user);
+
+        }
+        return adoptionRepository.save(adoption);
 
     }
 
@@ -46,21 +52,37 @@ public class AdoptionService implements IAdoptionService {
 
     @Override
     public List<Adoption> getAllAdoptions() {
-        return null;
+        return adoptionRepository.findAll();
     }
 
     @Override
-    public Adoption updateAdoption(Long userID, Adoption adoption) {
-        return null;
+    public Adoption updateAdoption(Long adoptionId, Adoption newAdoption) {
+        Adoption oldAdoption = getAdoptionById(adoptionId);
+        newAdoption.setName(oldAdoption.getName());
+        newAdoption.setYourPhoto(oldAdoption.getYourPhoto());
+        newAdoption.setPhoneNumber(oldAdoption.getPhoneNumber());
+        newAdoption.setDescription(oldAdoption.getDescription());
+        newAdoption.setApproved(oldAdoption.isApproved());
+        newAdoption.setUserWhoAdopt(oldAdoption.getUserWhoAdopt());
+        return adoptionRepository.save(oldAdoption);
+    }
+
+
+    public void deleteAdoption(String name) {
+        adoptionRepository.delete(adoptionRepository.findByName(name).orElseThrow(
+                ()-> new ResourceNotFoundException("Adoption you want to delete is not found.")
+        ));
+
+    }
+    @Override
+    public void deleteAdoption(Long Id){
+        adoptionRepository.deleteById(Id);
     }
 
     @Override
-    public void deleteAdoption(Long ID) {
+    public void approvedAdoption(Adoption adoption) {
+        adoption.setApproved(true);
+        adoptionRepository.save(adoption);
 
-    }
-
-    @Override
-    public Adoption approvedAdoption(Adoption adoption) {
-        return null;
     }
 }

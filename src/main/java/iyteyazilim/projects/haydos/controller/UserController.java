@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 //http://localhost:8088/api/v1/user
@@ -45,14 +46,24 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
     @DeleteMapping("/deleteUser/{id}")
-    public ResponseEntity<String> deleteUserById(Long userId ){
-        userService.deleteUserById(userId);
-        return ResponseEntity.ok("That User deleted successfully");
+
+
+    public ResponseEntity<HashMap<String,  String>> deleteUserById(Long userId ){
+        HashMap<String , String> response = new HashMap<>();
+        response.put("Message", "User has that id" + userId + "' deleted successfully.");
+        return ResponseEntity.ok(response);
 
     }
     @PutMapping("/updateEmailAndPassword/{email}")
     public ResponseEntity<User> updateUserEmailAndPassword(@PathVariable("email") String email , @RequestBody String newEmail , @RequestBody String newPassword){
         return ResponseEntity.ok( userService.updateUserEmailAndPasswordByEmail(email,newEmail,newPassword));
+    }
+
+    @DeleteMapping("/deleteUser/{email}")
+    public ResponseEntity<HashMap<String ,String >> deleteUserByEmail(@PathVariable("email") String email ){
+        HashMap<String , String> response = new HashMap<>();
+        response.put("Message", "User has that email  " + email + "' deleted successfully.");
+        return ResponseEntity.ok(response);
     }
 
 }

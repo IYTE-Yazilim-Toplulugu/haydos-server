@@ -17,6 +17,6 @@ public interface IMissingRepository extends JpaRepository<Missing , Long > {
 
     Optional<Missing> findByYourPhoto(String photo);
 
-    Optional<Missing> findByUserWhoMiss(User user);
+    Optional<List<Missing>> findByUserWhoMiss(User user);
 
 }
