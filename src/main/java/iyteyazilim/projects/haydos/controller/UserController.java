@@ -14,16 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//http//:localhost/api/v1/login
-@RequestMapping("api/v1")
+//http://localhost:8088/api/v1/user
+@RequestMapping("api/v1/user")
 @RestController
 @AllArgsConstructor
 public class UserController {
 
 
     private final UserService userService ;
-
-
 
 
     @PostMapping("/login")
@@ -42,7 +40,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/getAllUsers")
+    @GetMapping("/getAll")
     public ResponseEntity<List<User>> getAllUser(){
         return ResponseEntity.ok(userService.getAllUsers());
     }

@@ -1,6 +1,5 @@
 package iyteyazilim.projects.haydos.service;
 
-import iyteyazilim.projects.haydos.dto.Feeding;
 import iyteyazilim.projects.haydos.dto.LoginDto;
 import iyteyazilim.projects.haydos.dto.UserDto;
 import iyteyazilim.projects.haydos.entity.Paws;
