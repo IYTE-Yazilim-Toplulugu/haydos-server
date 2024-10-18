@@ -24,17 +24,6 @@ public class UserController {
 
     private final UserService userService ;
 
-
-    @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody LoginDto loginUser) {
-        try {
-            User user = userService.login(loginUser);
-            return ResponseEntity.ok(user);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // 404 response
-        }
-    }
-
     @PostMapping("/signUp")
     public ResponseEntity<User> signUp(@RequestBody UserDto userDto){
         return ResponseEntity.ok(userService.signUp(userDto));

@@ -3,10 +3,7 @@ package iyteyazilim.projects.haydos.service.impl;
 
 import iyteyazilim.projects.haydos.dto.LoginDto;
 import iyteyazilim.projects.haydos.dto.UserDto;
-import iyteyazilim.projects.haydos.entity.Paws;
-import iyteyazilim.projects.haydos.entity.Reports;
-import iyteyazilim.projects.haydos.entity.User;
-import iyteyazilim.projects.haydos.entity.UserRole;
+import iyteyazilim.projects.haydos.entity.*;
 import iyteyazilim.projects.haydos.exeception.ResourceNotFoundException;
 import iyteyazilim.projects.haydos.exeception.UserNotFoundException;
 import iyteyazilim.projects.haydos.repository.IUserRepository;
@@ -28,15 +25,11 @@ public class UserService implements IUserService {
     @Override
 
     public User login(LoginDto loginUser) {
-        return userRepository.findByEmail(loginUser.getEmail())
+        return userRepository.findByUsername(loginUser.getEmail())
                 .filter(user -> user.getPassword().equals(loginUser.getPassword()))
                 .orElseThrow(() -> new RuntimeException("Invalid username or password"));
     }
 
-    @Override
-    public User updateInfo(User user) {
-        return null;
-    }
 
     @Override
     public User updateLoginInfo(LoginDto loginDto) {
@@ -59,7 +52,7 @@ public class UserService implements IUserService {
 
         User user = new User() ;
 
-        user.setEmail(userDto.getEmail());
+        user.setUsername(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setName(userDto.getName());
         user.setPhoneNumber(user.getPhoneNumber());
@@ -79,7 +72,7 @@ public class UserService implements IUserService {
 
     @Override
     public void deleteUserByEmail(String email) {
-        User user = userRepository.findByEmail(email).orElseThrow(()-> new UserNotFoundException(email));
+        User user = userRepository.findByUsername(email).orElseThrow(()-> new UserNotFoundException(email));
         userRepository.deleteById(user.getId());
     }
 
@@ -87,9 +80,14 @@ public class UserService implements IUserService {
 
     @Override
     public User updateUserEmailAndPasswordByEmail(String email , String newEmail , String newPassword) {
-        User user = userRepository.findByEmail(email).orElseThrow(()-> new UserNotFoundException("That user is not found "));
+        User user = userRepository.findByUsername(email).orElseThrow(()-> new UserNotFoundException("That user is not found "));
         user.setPassword(newPassword);
-        user.setEmail(newEmail);
+        user.setUsername(newEmail);
         return user;
+    }
+
+    @Override
+    public User updateImage(String image) {
+        return null;
     }
 }

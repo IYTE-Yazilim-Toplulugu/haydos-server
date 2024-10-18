@@ -25,6 +25,4 @@ public interface IUserService {
     User updateUserEmailAndPasswordByEmail(String email , String newEmail , String newPassword);
 
     User updateImage(String image);
-
-    User addFriends(Friends friends);
 }
