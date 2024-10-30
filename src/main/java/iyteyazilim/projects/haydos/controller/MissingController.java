@@ -1,6 +1,7 @@
 package iyteyazilim.projects.haydos.controller;
 
 
+import iyteyazilim.projects.haydos.dto.MissingDto;
 import iyteyazilim.projects.haydos.entity.Missing;
 import iyteyazilim.projects.haydos.service.impl.MissingService;
 import lombok.AllArgsConstructor;
@@ -18,13 +19,12 @@ import java.util.List;
 @RequestMapping("api/v1/missing")
 public class MissingController {
 
-    @Autowired
     private MissingService missingService ;
 
 
 
     @PostMapping("/add")
-    public ResponseEntity<Missing> createMissing(@RequestBody Missing missing){
+    public ResponseEntity<Missing> createMissing(@RequestBody MissingDto missing){
         return ResponseEntity.ok(missingService.createMissing(missing));
     }
 

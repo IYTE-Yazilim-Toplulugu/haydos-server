@@ -3,6 +3,7 @@ package iyteyazilim.projects.haydos.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,8 @@ import java.util.Collection;
 @Table(name = "paw",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
 public class Paws {
 
     @Id
@@ -37,13 +40,11 @@ public class Paws {
     private String funFact;
 
     @Column(name =  "paw_type")
-    @Enumerated(EnumType.STRING)
-    private PetType petType ;
+    private String petType ;
 
 
     @Column(name = "paw_health")
-    @Enumerated(EnumType.STRING)
-    private HealthCondition healthCondition;
+    private String healthCondition;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aboutPaw")
     @Column(nullable = true)

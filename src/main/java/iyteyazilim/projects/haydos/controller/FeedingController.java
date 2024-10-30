@@ -1,52 +1,52 @@
 package iyteyazilim.projects.haydos.controller;
 
-
+import iyteyazilim.projects.haydos.dto.FeedingDto;
+import iyteyazilim.projects.haydos.entity.Feeding;
+import iyteyazilim.projects.haydos.service.impl.FeedingService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping
+@RequestMapping("/feeding")
 public class FeedingController {
-    /***Java'da yerel tarihi ve saat bilgisini almak için java.time paketini kullanabilirsiniz. Özellikle LocalDateTime sınıfı, yerel tarih ve saati almanıza olanak tanır. Aşağıda Java'da yerel tarihi ve saati JSON formatında nasıl döndürebileceğinizi gösteren bir örnek bulunmaktadır.
 
-     Java'da Yerel Tarih ve Saat Almak
-     java
-     Copy code
-     import java.time.LocalDateTime;
-     import java.time.format.DateTimeFormatter;
-     import org.springframework.http.ResponseEntity;
-     import org.springframework.web.bind.annotation.GetMapping;
-     import org.springframework.web.bind.annotation.RestController;
+     private final FeedingService feedingService;
 
-     @RestController
-     public class DateController {
-
-     @GetMapping("/local-date")
-     public ResponseEntity<String> getLocalDate() {
-     LocalDateTime now = LocalDateTime.now(); // Yerel tarih ve saat
-     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-     String formattedDate = now.format(formatter); // Formatlı tarih ve saat
-
-     return ResponseEntity.ok("{\"localDate\": \"" + formattedDate + "\"}");
+     @PostMapping("/add")
+     public ResponseEntity<Feeding> addFeeding(@RequestBody FeedingDto feedingDto) {
+          return ResponseEntity.ok(feedingService.createFeeding(feedingDto));
      }
+
+     @GetMapping("/get/{id}")
+     public ResponseEntity<Feeding> getFeedingById(@PathVariable Long id) {
+          return ResponseEntity.ok(feedingService.getFeedingById(id));
      }
-     Açıklamalar:
-     LocalDateTime.now(): Bu metod, sistemin yerel tarih ve saatini alır.
-     DateTimeFormatter: Bu sınıf, tarih ve saat bilgisini belirli bir formatta döndürmenize olanak sağlar. Yukarıdaki örnekte format "yyyy-MM-dd HH:mm:ss" olarak belirlenmiştir.
-     ResponseEntity: JSON formatında yanıt döndürmek için kullanılır. "{\"localDate\": \"" + formattedDate + "\"}" şeklinde bir JSON string oluşturulmuştur.
-     Örnek JSON Çıktısı
-     Yukarıdaki metodu çağırdığınızda, aşağıdaki gibi bir JSON çıktısı alırsınız:
 
-     json
-     Copy code
-     {
-     "localDate": "2024-10-10 15:00:00"
+     @GetMapping("/getAll")
+     public ResponseEntity<List<Feeding>> getAllFeedings() {
+          return ResponseEntity.ok(feedingService.getAllFeedings());
      }
-     Bu şekilde, Java'da yerel tarihi ve saati alabilir ve JSON formatında döndürebilirsiniz!
 
+     @PutMapping("/update/{id}")
+     public ResponseEntity<Feeding> updateFeeding(@PathVariable Long id, @RequestBody FeedingDto feedingDto) {
+          Feeding updatedFeeding = feedingService.updateFeeding(id, feedingDto);
+          return ResponseEntity.ok(updatedFeeding);
+     }
 
-     ChatGPT can make mistakes. Check important info.**/
+     @DeleteMapping("/delete/{id}")
+     public ResponseEntity<String> deleteFeeding(@PathVariable Long id) {
+          feedingService.deleteFeeding(id);
+          return ResponseEntity.ok("Feeding record deleted successfully.");
+     }
 
+     @PutMapping("/approve/{id}")
+     public ResponseEntity<Feeding> approveFeeding(@PathVariable Long id) {
+          Feeding feeding = feedingService.getFeedingById(id);
+          feedingService.approvedFeeding(feeding);
+          return ResponseEntity.ok(feeding);
+     }
 }

@@ -1,15 +1,18 @@
 package iyteyazilim.projects.haydos.service.impl;
 
 
+import iyteyazilim.projects.haydos.dto.AnnouncementDto;
 import iyteyazilim.projects.haydos.entity.Announcement;
 import iyteyazilim.projects.haydos.entity.User;
 import iyteyazilim.projects.haydos.exeception.ResourceNotFoundException;
 import iyteyazilim.projects.haydos.repository.IAnnouncementRepository;
+import iyteyazilim.projects.haydos.repository.IUserRepository;
 import iyteyazilim.projects.haydos.service.IAnnouncementService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,15 +22,27 @@ public class AnnouncementService implements IAnnouncementService {
     @Autowired
     private IAnnouncementRepository announcementRepository;
 
+    private IUserRepository userRepository ;
+
 
 
     @Override
-    public Announcement createAnnouncement(Announcement announcement) {
-        return announcementRepository.save(announcement);
-    }
-    public Announcement createAnnouncementWithUser(Announcement announcement , User user){
-        announcement.setUserWhoAnnounce(user);
-        return announcementRepository.save(announcement);
+    public Announcement createAnnouncement(AnnouncementDto announcementDto) {
+        if (announcementDto != null) {
+            var announcement = Announcement.builder()
+                    .id(announcementDto.getId())
+                    .header(announcementDto.getHeader())
+                    .photo(announcementDto.getImage())
+
+                    //TODO buraya doğru düzgün veri akışı sağlamam gerek
+                    .date(new Date(announcementDto.getDate()))
+                    .userWhoAnnounce(userRepository.findById(announcementDto.getUser_id()).orElse(null))
+                    .build();
+
+
+            return announcementRepository.save(announcement);
+        }
+        else throw new ResourceNotFoundException("Your announcement Dto is empty");
     }
 
     @Override
@@ -46,9 +61,19 @@ public class AnnouncementService implements IAnnouncementService {
     }
 
     @Override
-    public Announcement updateAnnouncement(Long announcementId, Announcement oldAnnouncement) {
-        Announcement newAnnouncement = getAnnouncementById(announcementId);
-        return announcementRepository.save(newAnnouncement);
+    public Announcement updateAnnouncement(Long announcementId, AnnouncementDto newAnnouncement) {
+        if (newAnnouncement != null){
+            Announcement oldAnnouncement = getAnnouncementById(announcementId);
+            oldAnnouncement.setHeader(newAnnouncement.getHeader());
+            //TODO aynı şekilde buraya da
+            oldAnnouncement.setDate(new Date (newAnnouncement.getDate()));
+            oldAnnouncement.setDescription(newAnnouncement.getDescription());
+            oldAnnouncement.setUserWhoAnnounce(userRepository.findById(newAnnouncement.getUser_id()).orElse(null));
+            return announcementRepository.save(oldAnnouncement);
+
+        }
+        else
+            throw new ResourceNotFoundException("Your new announcement is ");
 
     }
 
@@ -58,8 +83,5 @@ public class AnnouncementService implements IAnnouncementService {
 
     }
 
-    @Override
-    public User findUserWhoAnnounce(Announcement announcement) {
-        return null;
-    }
+
 }

@@ -1,12 +1,22 @@
 package iyteyazilim.projects.haydos.dto;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MissingDto {
 
     private Long id;
 
-    private String name ;
+    private String yourName ;
 
-    private String photo;
+    private String yourPhoto;
 
     private Long phoneNumber;
 

@@ -3,6 +3,7 @@ package iyteyazilim.projects.haydos.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,8 @@ import java.util.List;
 @Table(name = "location",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
 public class Location {
 
     @Id

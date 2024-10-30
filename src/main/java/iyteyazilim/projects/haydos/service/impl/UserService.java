@@ -25,12 +25,14 @@ public class UserService implements IUserService {
     @Override
 
     public User login(LoginDto loginUser) {
-        return userRepository.findByUsername(loginUser.getEmail())
-                .filter(user -> user.getPassword().equals(loginUser.getPassword()))
-                .orElseThrow(() -> new RuntimeException("Invalid username or password"));
+        if (loginUser != null) {
+            return userRepository.findByUsername(loginUser.getEmail())
+                    .filter(user -> user.getPassword().equals(loginUser.getPassword()))
+                    .orElseThrow(() -> new RuntimeException("Invalid username or password"));
+        }
+        else throw new UserNotFoundException("Your login object is empty");
+
     }
-
-
     @Override
     public User updateLoginInfo(LoginDto loginDto) {
         return null;
@@ -49,27 +51,25 @@ public class UserService implements IUserService {
 
     @Override
     public User signUp(UserDto userDto) {
-
-        User user = new User() ;
-
-        user.setUsername(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setName(userDto.getName());
-        user.setPhoneNumber(user.getPhoneNumber());
-        user.setUserRole(UserRole.NORMAL);
-
-        user.setAnnouncementByMe(null);
-        user.setPoints(0);
-        user.setImage("");
-        user.setMissingPawsByMe(null);
-        user.setAdoptionPawsByMe(null);
-        user.setFeedPawsByMe(null);
-        user.setReports(null);
-        user.setFriends(null);
-    return userRepository.save(user);
-
+        if (userDto != null) {
+            User user = new User();
+            user.setUsername(userDto.getEmail());
+            user.setPassword(userDto.getPassword());
+            user.setName(userDto.getName());
+            user.setPhoneNumber(user.getPhoneNumber());
+            user.setUserRole(UserRole.NORMAL);
+            user.setAnnouncementByMe(null);
+            user.setPoints(0);
+            user.setImage("");
+            user.setMissingPawsByMe(null);
+            user.setAdoptionPawsByMe(null);
+            user.setFeedPawsByMe(null);
+            user.setReports(null);
+            user.setFriends(null);
+            return userRepository.save(user);
+        }
+        else throw new UserNotFoundException("Your user object is empty.");
     }
-
     @Override
     public void deleteUserByEmail(String email) {
         User user = userRepository.findByUsername(email).orElseThrow(()-> new UserNotFoundException(email));

@@ -11,6 +11,7 @@ import lombok.*;
 @Table(name = "adoption",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Adoption {
 
     @Id

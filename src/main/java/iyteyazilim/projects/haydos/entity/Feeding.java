@@ -4,6 +4,7 @@ import iyteyazilim.projects.haydos.entity.Location;
 import iyteyazilim.projects.haydos.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,8 @@ import java.util.Date;
 @Table(name = "feeding",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
 public class Feeding {
 
     @Id

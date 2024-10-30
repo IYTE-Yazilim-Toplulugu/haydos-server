@@ -1,7 +1,12 @@
 package iyteyazilim.projects.haydos.dto;
 
-import java.util.Date;
+import lombok.*;
 
+@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class AnnouncementDto {
     private Long id ;
 

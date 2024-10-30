@@ -8,3 +8,6 @@ services:
       # MYSQL_USER ve MYSQL_PASSWORD kaldırılmalı
     ports:
       - '3307:3306'  # Host ve konteyner portlarını bağla
+
+#latest yerine farklı bir versiyonu
+#servere

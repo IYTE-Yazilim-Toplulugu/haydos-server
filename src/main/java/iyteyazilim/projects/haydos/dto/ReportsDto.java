@@ -1,7 +1,15 @@
 package iyteyazilim.projects.haydos.dto;
 
-import java.time.LocalDate;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReportsDto {
 
     private Long id ;
@@ -10,7 +18,7 @@ public class ReportsDto {
 
     private Long paw_id ;
 
-    private final LocalDate today = LocalDate.now();
+    private String date ;
 
     private Long user_id ;
 

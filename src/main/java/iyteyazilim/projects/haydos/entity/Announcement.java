@@ -2,6 +2,7 @@ package iyteyazilim.projects.haydos.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 @Table(name = "announcement",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Announcement {
 
     @Id
@@ -24,6 +26,7 @@ public class Announcement {
     private String photo;
 
     private Date date;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
