@@ -15,7 +15,7 @@ public class DatabaseConfig implements EmbeddedDatabaseConfigurer {
         databaseName = "haydosAppDB";
         properties.setUsername("root");
         properties.setPassword("yusuf.129");
-        properties.setUrl("jdbc:mysql://localhost:3306/haydosAppDB");
+        properties.setUrl("jdbc:mysql://localhost:3307/haydosAppDB");
 
     }
 

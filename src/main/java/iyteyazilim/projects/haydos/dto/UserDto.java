@@ -10,12 +10,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class LoginDto {
+public class UserDto {
 
-    private Long id ;
+    private String name ;
 
-    private String email;
+    private String email ;
 
     private String password ;
 
+    private String phoneNumber ;
 }

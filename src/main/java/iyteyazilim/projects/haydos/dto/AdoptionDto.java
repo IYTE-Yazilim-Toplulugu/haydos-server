@@ -1,26 +1,26 @@
 package iyteyazilim.projects.haydos.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class AdoptionDto {
+    private Long id ;
 
-    private String yourName;
+    private String name;
 
-    private String yourPhoto;
+    private String image ;
 
-    private Long phoneNumber;
+    private Long phoneNumber ;
 
-    private String description;
+    private String description ;
 
-    private boolean approved;
+    private boolean approved ;
 
     private Long user_id ;
+
 }

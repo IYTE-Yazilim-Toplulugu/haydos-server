@@ -11,13 +11,14 @@ import lombok.*;
 @Table(name = "adoption",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Adoption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String yourName;
+    private String name;
 
     private String yourPhoto;
 

@@ -2,10 +2,13 @@ package iyteyazilim.projects.haydos.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 
 @Entity
@@ -13,6 +16,8 @@ import java.util.Date;
 @Table(name = "reports",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
 public class Reports {
 
     @Id
@@ -28,7 +33,7 @@ public class Reports {
     private String report;
 
     @Column(name = "report_date")
-    private Date date;
+    private String date;
     @ManyToOne
     @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
     private User userWhoReport;

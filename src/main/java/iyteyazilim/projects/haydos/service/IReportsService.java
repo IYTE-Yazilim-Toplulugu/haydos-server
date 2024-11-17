@@ -1,20 +1,23 @@
 package iyteyazilim.projects.haydos.service;
 
+import iyteyazilim.projects.haydos.dto.ReportsDto;
 import iyteyazilim.projects.haydos.entity.Missing;
+import iyteyazilim.projects.haydos.entity.Paws;
 import iyteyazilim.projects.haydos.entity.Reports;
+import iyteyazilim.projects.haydos.entity.User;
 
 import java.util.List;
 
 public interface IReportsService {
 
-    Reports createReports(Reports reports);
+    Reports addReports(ReportsDto reportsDto);
 
     Reports getReportsById(Long Id);
 
     List<Reports> getAllReports();
 
-    Reports updateReports(Long reportsID, Reports reports);
 
-    void deleteReports(Long ID);
+    void deleteReportById(Long ID);
+
 
 }

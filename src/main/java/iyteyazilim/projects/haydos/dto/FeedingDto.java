@@ -9,17 +9,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+public class FeedingDto {
+    private Long id ;
 
-public class LocationDto {
+    private Long location_id ;
 
-    private Long id;
+    private Long user_id ;
 
-    private Long latitude ;
+    private String image ;
 
-    private Long longitude;
+    private boolean approved ;
 
-    private String name ;
-
-    private String description ;
-
+    private String feedingTime ;
 }

@@ -3,6 +3,7 @@ package iyteyazilim.projects.haydos.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,21 +14,23 @@ import java.util.List;
 @Table(name = "location",schema = "haydosAppDB")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long xCoordinate;
+    private Long latitude;
 
-    private Long yCoordinate;
+    private Long longitude;
 
     private String name;
 
     private String description ;
 
-    @OneToMany(mappedBy = "locationWhichFeed", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "locationWhichFeed", cascade = CascadeType.ALL )
     private List<Feeding> feedings;
 
 

@@ -2,33 +2,35 @@ package iyteyazilim.projects.haydos.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.*;
 
 @Entity
 @Data
-@Table(name = "missing" ,schema = "haydosAppDB")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
 public class Missing {
 
+
+    @GeneratedValue
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id ;
 
-    private String pawName;
+    private String yourName;
 
-    private String pawPhoto;
+    private String yourPhoto ;
 
-    private Long phoneNumber;
+    private Long phoneNumber ;
 
-    private String description;
+    private String description ;
 
-    private boolean isApproved;
+    @Column(name = "approved_status")
+    private boolean approved;
 
     @ManyToOne
-    @JoinColumn(name = "user_id") // User tablosundaki 'id' kolonuna referans veriyor
-    private User userWhoMiss;
+    @JoinColumn(name = "user_id" , nullable = false) // User tablosundaki 'id' kolonuna referans veriyor
+    private User userWhoMiss ;
 }

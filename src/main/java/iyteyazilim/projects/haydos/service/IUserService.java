@@ -1,18 +1,28 @@
 package iyteyazilim.projects.haydos.service;
 
-import iyteyazilim.projects.haydos.dto.Feeding;
+import iyteyazilim.projects.haydos.dto.LoginDto;
+import iyteyazilim.projects.haydos.dto.UserDto;
+import iyteyazilim.projects.haydos.entity.Friends;
+import iyteyazilim.projects.haydos.entity.Paws;
+import iyteyazilim.projects.haydos.entity.Reports;
+import iyteyazilim.projects.haydos.entity.User;
 
 import java.util.List;
 
 public interface IUserService {
-    Feeding createUser(Feeding userDto);
+    User login(LoginDto loginDto);
 
-    Feeding getUserById(Long Id);
+    User updateLoginInfo(LoginDto loginDto);
 
-    List<Feeding> getAllUsers();
+    User signUp(UserDto userDto);
 
-    Feeding updateUser(Long userID, Feeding userDto);
+    List<User> getAllUsers();
 
-    void deleteUser(Long ID);
+    void deleteUserById(Long Id);
 
+    void deleteUserByEmail(String email);
+
+    User updateUserEmailAndPasswordByEmail(String email , String newEmail , String newPassword);
+
+    User updateImage(String image);
 }
